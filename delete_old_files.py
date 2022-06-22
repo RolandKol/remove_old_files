@@ -8,6 +8,7 @@ def delete_old_files():
     days_to_keep = 7
     path = os.getcwd()  # folder of the script file
     # path = r"C:\Test"
+    extension = '.xlsx'
 
     now = time.time()
     time_fence = now - days_to_keep * 86400
@@ -20,7 +21,7 @@ def delete_old_files():
 
     for f in file_list:
         f = os.path.join(path, f)
-        if os.stat(f).st_mtime < time_fence and f.endswith(".xlsx"):
+        if os.stat(f).st_mtime < time_fence and f.endswith(extension):
             os.remove(f)
             print(f'file: {f} was deleted')
     print('\nScript finished the job!')
